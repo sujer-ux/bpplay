@@ -2,9 +2,20 @@ const player = document.querySelector('.play-wrapp'),
       expBtn = player.querySelector('.exp-top'),
       miniPlayer = player.querySelector('.mini-player'),
       songImage = player.querySelector('.song-image'),
-      songInfo = player.querySelector('.song-info');
+      songInfo = player.querySelector('.song-info'),
+      indexPlay = document.querySelector('.play-main'),
+      playlist = player.querySelector('.mini-playlist');
 
-
+indexPlay.onclick = function() {
+    if (!player.classList.contains('player-active')) {
+        player.classList.add('player-active');
+        indexPlay.innerHTML = 'Close';
+    } else {
+        player.classList.remove('player-active');
+        player.classList.remove('expand');
+        indexPlay.innerHTML = 'Play!';
+    }
+}
 
 expBtn.onclick = expandPlayer;
 
@@ -29,11 +40,17 @@ miniPlayer.addEventListener('scroll', function() {
         songImage.style.height = setH + 'px';
         if (setH < 55) {
             songInfo.classList.add('minimize');
+            playlist.style.marginTop = 457 + 'px';
             songImage.style.height = null;
         } else {
             songInfo.classList.remove('minimize');
+            playlist.style.marginTop = null;
         }
     }
+    
+    //157
+    
+    
     console.log(setH);
     window.requestAnimationFrame(step);
 });
