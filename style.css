@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -17,7 +18,7 @@ a {
     color: white;
 }
 
--webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
 
 body::-webkit-scrollbar {
     width: 7px;
