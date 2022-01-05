@@ -6,16 +6,19 @@ const player = document.querySelector('.play-wrapp'),
       indexPlay = document.querySelector('.play-main'),
       playlist = player.querySelector('.mini-playlist');
 
-indexPlay.onclick = function() {
+
+indexPlay.addEventListener('click', function() {
     if (!player.classList.contains('player-active')) {
         player.classList.add('player-active');
-        indexPlay.innerHTML = 'Close';
+        indexPlay.innerHTML = 'Stop';
+        playColl();
     } else {
         player.classList.remove('player-active');
         player.classList.remove('expand');
         indexPlay.innerHTML = 'Play!';
+        stop(audio);
     }
-}
+});
 
 expBtn.onclick = expandPlayer;
 
