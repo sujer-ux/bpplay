@@ -37,6 +37,8 @@ let base = {
     ],
 };
 
+console.table(base);
+
 const prevImg = document.querySelector('.prew-image-play').querySelector('img'),
       prevSongName = document.querySelector('.song-name'),
       prevSongArtist = document.querySelector('.artist-name'),
@@ -54,6 +56,7 @@ const prevImg = document.querySelector('.prew-image-play').querySelector('img'),
 var SongID = 6;
 let audio = new Audio(base.song[SongID]);
 let played = false;
+let moveTime = false;
 
 audio.onended = function() {
     audioNext();
@@ -84,6 +87,7 @@ function audioPrew() {
 
 function playColl() {
     audio.play();
+    playBtn.classList.add('played');
     played = true;
     prevImg.src = base.image[SongID];
     prevSongName.innerHTML = base.trackItem[SongID];
@@ -102,9 +106,11 @@ function stop(elem) {
 function playSong() {
     if (!played) {
         audio.play();
+        playBtn.classList.add('played');
         played = true;
     } else if (played) {
         audio.pause();
+        playBtn.classList.remove('played');
         played = false;
     }
 }
@@ -116,8 +122,36 @@ function timeProgressUpdate(elem, elem2) {
         let d = audio.duration;
         let c = audio.currentTime;
         elem.style.width = (100 * c) / d + '%';
-        elem2.style.width = (100 * c) / d + '%';
+        if (!moveTime) {
+            elem2.style.width = (100 * c) / d + '%';
+        }
     }
-    
 }
+
+function audioRew() {
+    let w,
+        o;
+    
+    timeBar.parentNode.addEventListener('mousedown', function() {
+        w = timeBar.parentNode.offsetWidth;
+        o = event.offsetX;
+        timeBar.parentNode.addEventListener('mousemove', () => {
+            let percent = o / (w / 100);
+            console.log(percent);
+            timeBar.style.width = percent + '%';
+        });
+        moveTime = true;
+    });
+    timeBar.parentNode.addEventListener('mouseup', function() {
+        audio.pause();
+        audio.currentTime = audio.duration * o/w;
+        if (played) {
+            audio.play();
+        }
+        moveTime = false;
+    });
+}
+
+audioRew();
+
 timeProgressUpdate(prewTimeBar, timeBar);
