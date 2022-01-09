@@ -7,6 +7,8 @@ const player = document.querySelector('.play-wrapp'),
       playlist = player.querySelector('.mini-playlist');
 
 
+
+
 indexPlay.addEventListener('click', function() {
     if (!player.classList.contains('player-active')) {
         player.classList.add('player-active');
@@ -54,6 +56,5 @@ miniPlayer.addEventListener('scroll', function() {
     //157
     
     
-    console.log(setH);
     window.requestAnimationFrame(step);
 });

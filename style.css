@@ -18,6 +18,15 @@ a {
     color: white;
 }
 
+.un-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
 
 
 body::-webkit-scrollbar {
@@ -317,7 +326,7 @@ body::-webkit-scrollbar-thumb {
 
 .player-controls {
     width: 100%;
-    height: 55px;
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -362,19 +371,20 @@ body::-webkit-scrollbar-thumb {
 }
 
 .time-wrapper {
-    width: 100%;
-    height: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 88%;
     background-color: #1f1f1f;
+    margin: 0 auto;
 }
 
 .timebar {
-    width: 311px;
+    width: 100%;
     height: 5px;
     background-color: #343434;
     border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    overflow: visible;
 }
 
 .timeprogress {
@@ -382,6 +392,31 @@ body::-webkit-scrollbar-thumb {
     width: 30%;
     background-color: #d33030;
     border-radius: 5px;
+}
+
+.roundRange {
+    position: absolute;
+    top: -5px;
+    width: 15px;
+    height: 15px;
+    background-color: #d33030;
+    border-radius: 50%;
+    margin-left: -6px;
+}
+
+.hoverRange .roundRange {
+    transform: scale(1.15);
+}
+
+.timer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    height: 24px;
+    color: #7e7e7e;
+    margin-top: 5px;
 }
 
 .mix-main-controls {
@@ -473,3 +508,5 @@ body::-webkit-scrollbar-thumb {
     background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='utf-8'?%3E%3C!-- Generator: Adobe Illustrator 23.0.6, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 38.3 47.6' style='enable-background:new 0 0 38.3 47.6;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0{fill:%23FFFFFF;} %3C/style%3E%3Cg%3E%3Cpath class='st0' d='M13.3,41c0,3.7-3,6.6-6.6,6.6l0,0C3,47.6,0,44.6,0,41V6.6C0,3,3,0,6.6,0l0,0c3.7,0,6.6,3,6.6,6.6V41z'/%3E%3Cpath class='st0' d='M38.1,41c0,3.7-3,6.6-6.6,6.6l0,0c-3.7,0-6.6-3-6.6-6.6V6.6c0-3.7,3-6.6,6.6-6.6l0,0c3.7,0,6.6,3,6.6,6.6V41z' /%3E%3C/g%3E%3C/svg%3E");
     background-size: 66%;
 }
+
+
